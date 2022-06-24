@@ -26,3 +26,19 @@ END;
 
 EXEC spStudentDetails_select;
 
+ALTER TABLE Student_Details ADD Age INT;
+
+----------TRIGGER FUNCTIONALITY---------------
+
+CREATE TRIGGER Check_age
+ON Student_Details
+FOR INSERT AS
+BEGIN
+Declare @Id int  
+  SELECT @Id = StudentId from inserted  
+  INSERT INTO Course_Details VALUES (@Id,2,'C#')
+END;
+
+INSERT INTO Student_Details VALUES ('jai','IT',19);
+
+select* from Course_Details;
